@@ -105,3 +105,68 @@ you can perform operations on values of different types without raising an excep
 If you add a number and a string, the number is coerced to a string.
 If you add a boolean and a string, the boolean is coerced to a string.
 If you add a number and a boolean, the boolean is coerced to a number.
+
+## day 5 template literals
+passes the area and perimeter of a rectangle to a tag function named sides. Recall that the first argument of a tag function is an array of string literals from the template, and the subsequent values are the template's respective expression values.
+
+Complete the function in the editor so that it does the following:
+
+1. Finds the initial values of  s1 and s2  by plugging the area and perimeter values into the formula:
+
+s = P +- sqrt(P squared - 16 * A) / 4
+P = perimeter
+A = area
+
+2. creates an array of s1 and s2 and sorts it in ascending order
+
+3. returns the sorted array
+
+constraints s1, s2 from 1 to 100
+
+Template literals (formerly known as template strings) are string literals that allow for embedded expressions. We typically use them to express strings spanning multiple lines or for string interpolation, which essentially allows us to create a template with one or more placeholders for inserting variable text at a later time.
+
+While traditional strings are wrapped in single or double quotes, template literals are wrapped in backtick (`) characters. A template literal can contain placeholders, which are preceded by a dollar sign ($) and wrapped in curly braces ({}). For example, in the template literal `${expression}`, the expression text between the placeholders is passed to a function. The default function simply concatenates the template literal's parts into a single string.
+
+Any time we see an expression preceding a template literal, we call the expression a tag and the template string a tagged template literal. In these instances, we call the tag expression (typically a function) with the processed template literal, which we can then manipulate before outputting the final string.
+
+e.g.
+const a = 2;
+const b = 3;
+
+console.log(`The sum of a and b is ${a + b}. 
+The product of a and b is ${a * b}.`);
+
+e.g. of tagged template literal
+var a = 5;
+var b = 10;
+
+function foo(strings, ...values) {
+    console.log("." + strings[0] + ".");
+    console.log("." + strings[1] + ".");
+    console.log("." + strings[2] + ".");
+    console.log("." + strings[3] + ".");
+    console.log(values[0]);
+    console.log(values[1]);
+    console.log(values[2]);
+}
+
+foo`Sum ${a + b}
+Product ${a * b}
+Division ${b / a}`;
+
+e.g. can return from tagged template
+var a = 5;
+var b = 10;
+
+function foo(strings, ...values) {
+    let a = values[0];
+    let b = values[1];
+
+    return `Sum ${a + b}
+Product ${a * b} 
+Division ${b / a}`;
+}
+
+console.log(foo`Num1 ${a + 10}
+Num2 ${b * 2} 
+Num3 ${b / a}`);

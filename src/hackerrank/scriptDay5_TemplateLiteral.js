@@ -37,12 +37,15 @@ let expressions = [140, 48];
 
 function sides(literals, ...expressions) {
 
-    let s1 = 10;
-    let s2 = 14;
-    let a = 140;
-    let p = 48;
+    let s1 = 0;
+    let s2 = 0;
+    let A = expressions[0];
+    let P = expressions[1];
 
-    let side1 = math.sqrt()
+    s1 = (P + Math.sqrt(P*P - 16 * A))/4
+    s2 = (P - Math.sqrt(P*P -16 * A))/4
+
+    return([s1, s2].sort()) 
 }
 
 
