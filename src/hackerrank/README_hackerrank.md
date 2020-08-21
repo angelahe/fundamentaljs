@@ -170,3 +170,104 @@ Division ${b / a}`;
 console.log(foo`Num1 ${a + 10}
 Num2 ${b * 2} 
 Num3 ${b / a}`);
+
+## Day 5 arrow functions
+
+These expressions lexically bind the this value while using less syntax than a typical function expression. Arrow functions are always anonymous.
+
+Here are some basic examples of arrow function syntax:
+
+(parameter) => {statements}
+parameter => {statements}
+parameter => expression
+parameter => {return expression}
+
+(param1, param2, ..., paramN) => {statements}
+(param1, param2, ..., paramN) => expression
+(param1, param2, ..., paramN) => {return expression}
+
+'use strict';
+
+const makeArray = (...values) => { return values };
+console.log('Array:', makeArray(1, 2, 3, 4));
+console.log('Array:', makeArray(1, 2, 3, 4, 5, 6));
+
+const getSum = (a, b) => { return a + b };
+console.log('1 + 2 =', getSum(1, 2));
+
+const greeting = 'Hello, World.';
+const capitalize = (myString) => { return myString.toUpperCase() };
+console.log(greeting, '=>', capitalize(greeting));
+
+// to make code shorter - before
+'use strict';
+
+const arr = [1, 2, 3, 4, 5];
+
+const sum = arr.reduce(function (a, b) {
+    return a + b;
+}, 0);
+
+console.log('Array:', arr);
+console.log('Sum:', sum);
+
+// after arrow fn
+'use strict';
+
+const arr = [1, 2, 3, 4, 5];
+
+const sum = arr.reduce((a, b) => { return a + b }, 0);
+
+console.log('Array:', arr);
+console.log('Sum:', sum);
+
+// further reduce by getting rid of return
+'use strict';
+
+const arr = [1, 2, 3, 4, 5];
+
+const sum = arr.reduce((a, b) => a + b, 0);
+
+console.log('Array:', arr);
+console.log('Sum:', sum);
+
+// length of strings in array
+'use strict';
+
+const arr = ['first', 'second', 'third', 'fourth', 'fifth'];
+
+const len = arr.map(function(s) { return s.length });
+
+console.log('Array:', arr);
+console.log('Lengths:', len);
+
+// using arrow fn
+'use strict';
+
+const arr = ['first', 'second', 'third', 'fourth', 'fifth'];
+
+const len = arr.map(s => s.length);
+
+console.log('Array:', arr);
+console.log('Lengths:', len);
+
+//array elements greater than a value
+'use strict';
+
+const arr = [1, 2, 3, 4, 5];
+
+const greaterThan3 = arr.filter(function(a) {
+    return a > 3;
+});
+
+console.log('Array:', arr);
+console.log('Elements Greater Than 3:', greaterThan3);
+// and with array fn
+'use strict';
+
+const arr = [1, 2, 3, 4, 5];
+
+const greaterThan3 = arr.filter(a => a > 3);
+
+console.log('Array:', arr);
+console.log('Elements Greater Than 3:', greaterThan3);
